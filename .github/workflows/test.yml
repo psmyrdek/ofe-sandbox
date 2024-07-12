@@ -1,4 +1,5 @@
-name: woolf1717-playwright-tests
+name: test
+
 on:
   workflow_dispatch:
 
