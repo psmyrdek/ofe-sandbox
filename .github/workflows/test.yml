@@ -1,7 +1,7 @@
 name: test
 
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
   test:
@@ -12,12 +12,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-      - name: Go to examples
-        run: cd examples
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Playwright Browsers
-        run: npm run test:e2e
+
+      - name: Deps and test
+        run: |
+          cd examples
+          npm ci
+          npm run test:e2e
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
